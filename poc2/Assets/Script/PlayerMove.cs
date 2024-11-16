@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
-
+    [Header("Basic")]
+    public Rigidbody2D rb;
     [Header("Movement")]
     public Vector2 movement;
     public WheelJoint2D Fwheel;
@@ -14,10 +15,38 @@ public class PlayerMove : MonoBehaviour
     public float breakRate;
     [Header("Turn")]
     public bool isTurning;
+    public Rigidbody2D FWheelRb;
+    public Rigidbody2D BwheelRb;
+    [Header("filp")]
+    public float torqueForce;
+    public float maxAngularVelocity;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (speedMultiplier < 0)
+        {
+            PhysicsMaterial2D FWmaterial = new PhysicsMaterial2D();
+            FWmaterial.friction = 0.8f;
+            FWmaterial.bounciness = 0;
+            BwheelRb.sharedMaterial = FWmaterial;
+
+            PhysicsMaterial2D BWmaterial = new PhysicsMaterial2D();
+            BWmaterial.friction = 0.4f;
+            BWmaterial.bounciness = 0;
+            FWheelRb.sharedMaterial = BWmaterial;
+        }
+        else if (speedMultiplier > 0)
+        {
+            PhysicsMaterial2D FWmaterial = new PhysicsMaterial2D();
+            FWmaterial.friction = 0.8f;
+            FWmaterial.bounciness = 0;
+            FWheelRb.sharedMaterial = FWmaterial;
+
+            PhysicsMaterial2D BWmaterial = new PhysicsMaterial2D();
+            BWmaterial.friction = 0.4f;
+            BWmaterial.bounciness = 0;
+            BwheelRb.sharedMaterial = BWmaterial;
+        }
     }
 
     private void OnMovement(InputValue value)
@@ -48,7 +77,19 @@ public class PlayerMove : MonoBehaviour
             Fmotor.motorSpeed = Mathf.Lerp(Fmotor.motorSpeed, 0, Time.fixedDeltaTime * breakRate);
             Fwheel.motor = Fmotor;
         }
-        
+        ///////////////////filp////////////////////////////////
+        if (movement.x != 0 && isTurning == false)
+        {
+            rb.AddTorque(-movement.x * torqueForce * Time.deltaTime);
+            if (rb.angularVelocity > maxAngularVelocity)
+            {
+                rb.angularVelocity = maxAngularVelocity;
+            }
+            else if (rb.angularVelocity < -maxAngularVelocity)
+            {
+                rb.angularVelocity = -maxAngularVelocity;
+            }
+        }
 
     }
 
@@ -78,5 +119,29 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(2f);
         isTurning = false;
         speedMultiplier = speedMultiplier * - 1;
+        if (speedMultiplier < 0)
+        {
+            PhysicsMaterial2D FWmaterial = new PhysicsMaterial2D();
+            FWmaterial.friction = 0.8f; 
+            FWmaterial.bounciness = 0;
+            BwheelRb.sharedMaterial = FWmaterial;
+
+            PhysicsMaterial2D BWmaterial = new PhysicsMaterial2D();
+            BWmaterial.friction = 0.4f;
+            BWmaterial.bounciness = 0;
+            FWheelRb.sharedMaterial = BWmaterial;
+        }
+        else if (speedMultiplier > 0)
+        {
+            PhysicsMaterial2D FWmaterial = new PhysicsMaterial2D();
+            FWmaterial.friction = 0.8f;
+            FWmaterial.bounciness = 0;
+            FWheelRb.sharedMaterial = FWmaterial;
+
+            PhysicsMaterial2D BWmaterial = new PhysicsMaterial2D();
+            BWmaterial.friction = 0.4f;
+            BWmaterial.bounciness = 0;
+            BwheelRb.sharedMaterial = BWmaterial;
+        }
     }
 }
