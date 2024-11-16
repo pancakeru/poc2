@@ -20,6 +20,17 @@ public class PlayerMove : MonoBehaviour
     [Header("filp")]
     public float torqueForce;
     public float maxAngularVelocity;
+    public float rotationMount;
+    private float previousRotation;
+    [Header("Shoot")]
+    public Weapon weapon;
+    public Rigidbody2D Shootrb;
+    Vector2 mousePos;
+
+    [Header("shotGun")]
+    public int shotGunAmount;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,18 +95,40 @@ public class PlayerMove : MonoBehaviour
             if (rb.angularVelocity > maxAngularVelocity)
             {
                 rb.angularVelocity = maxAngularVelocity;
+               
             }
             else if (rb.angularVelocity < -maxAngularVelocity)
             {
                 rb.angularVelocity = -maxAngularVelocity;
-            }
-        }
+                
 
+            }
+
+            
+        }
+        //////////////mouse//////////////////////
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        float rotationDelta = rb.rotation - previousRotation;
+
+        
+        if (rotationDelta > 180)
+        {
+            rotationDelta -= 360;
+        }
+        else if (rotationDelta < -180)
+        {
+            rotationDelta += 360;
+        }
+
+
+        rotationMount += rotationDelta;
+
+        previousRotation = rb.rotation;
         //////////////////////Turning///////////////////////////
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -103,6 +136,23 @@ public class PlayerMove : MonoBehaviour
             {
                 StartCoroutine(Turning());
             }
+        }
+        ///////////////////reload////////////////////
+        if (rotationMount > 360)
+        {
+            Debug.Log("360!");
+            rotationMount = 0f;
+            shotGunAmount += 1;
+        }
+        else if (rotationMount < -360)
+        {
+            Debug.Log("-360!");
+            rotationMount = 0f;
+        }
+        //////////////shoot/////////////////////
+        if (Input.GetMouseButtonDown(0))
+        {
+            weapon.fire();
         }
     }
 
