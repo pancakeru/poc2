@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     [Header("Basic")]
     public Rigidbody2D rb;
+    public Aim aim;
     [Header("Movement")]
     public Vector2 movement;
     public WheelJoint2D Fwheel;
@@ -22,10 +23,7 @@ public class PlayerMove : MonoBehaviour
     public float maxAngularVelocity;
     public float rotationMount;
     private float previousRotation;
-    [Header("Shoot")]
-    public Weapon weapon;
-    public Rigidbody2D Shootrb;
-    Vector2 mousePos;
+
 
     [Header("shotGun")]
     public int shotGunAmount;
@@ -108,6 +106,7 @@ public class PlayerMove : MonoBehaviour
         }
         //////////////mouse//////////////////////
         
+        
     }
 
     // Update is called once per frame
@@ -115,7 +114,14 @@ public class PlayerMove : MonoBehaviour
     {
         float rotationDelta = rb.rotation - previousRotation;
 
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (shotGunAmount > 0)
+            {
+                aim.ShootShotGun();
+                shotGunAmount -= 1;
+            }
+        }
         if (rotationDelta > 180)
         {
             rotationDelta -= 360;
@@ -152,7 +158,7 @@ public class PlayerMove : MonoBehaviour
         //////////////shoot/////////////////////
         if (Input.GetMouseButtonDown(0))
         {
-            weapon.fire();
+            //weapon.fire();
         }
     }
 
