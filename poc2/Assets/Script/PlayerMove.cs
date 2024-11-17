@@ -114,14 +114,7 @@ public class PlayerMove : MonoBehaviour
     {
         float rotationDelta = rb.rotation - previousRotation;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (shotGunAmount > 0)
-            {
-                aim.ShootShotGun();
-                shotGunAmount -= 1;
-            }
-        }
+        
         if (rotationDelta > 180)
         {
             rotationDelta -= 360;
@@ -158,7 +151,11 @@ public class PlayerMove : MonoBehaviour
         //////////////shoot/////////////////////
         if (Input.GetMouseButtonDown(0))
         {
-            //weapon.fire();
+            if (shotGunAmount > 0)
+            {
+                aim.ShootShotGun();
+                shotGunAmount -= 1;
+            }
         }
     }
 
