@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 331045131}
   - component: {fileID: 331045130}
   m_Layer: 0
-  m_Name: Body
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,13 +223,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331045125}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.422, y: 0.768, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0011344751, w: 0.9999994}
+  m_LocalPosition: {x: 0.43025637, y: -2.5510445, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 535848574}
-  m_Father: {fileID: 362229573}
+  - {fileID: 1085558099}
+  - {fileID: 400775823}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &331045127
 BoxCollider2D:
@@ -404,47 +406,17 @@ MonoBehaviour:
   Bwheel: {fileID: 1085558100}
   speedMultiplier: 2500
   breakRate: 1.5
+  WheelF: {fileID: 400775828}
+  WheelB: {fileID: 1085558104}
   isTurning: 0
   FWheelRb: {fileID: 400775825}
   BwheelRb: {fileID: 1085558101}
   torqueForce: 6500
   maxAngularVelocity: 600
   rotationMount: 0
-  shotGunAmount: 0
---- !u!1 &362229572
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 362229573}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &362229573
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 362229572}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.0011344751, w: 0.9999994}
-  m_LocalPosition: {x: 0.01, y: -3.32, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 331045126}
-  - {fileID: 1085558099}
-  - {fileID: 400775823}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.13}
+  clockSpinAmount: 0
+  counterClockSpinAmount: 0
+  abilityList: []
 --- !u!1 &400775822
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,11 +447,11 @@ Transform:
   m_GameObject: {fileID: 400775822}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.44, y: -0.39, z: 0}
+  m_LocalPosition: {x: 1.0180001, y: -1.158, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 362229573}
+  m_Father: {fileID: 331045126}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!235 &400775824
 WheelJoint2D:
@@ -816,7 +788,7 @@ GameObject:
   - component: {fileID: 535848574}
   - component: {fileID: 535848575}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1368,11 +1340,11 @@ Transform:
   m_GameObject: {fileID: 1085558098}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.64, y: -0.34, z: 0}
+  m_LocalPosition: {x: -1.0619999, y: -1.1079999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 362229573}
+  m_Father: {fileID: 331045126}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!235 &1085558100
 WheelJoint2D:
@@ -2170,5 +2142,5 @@ SceneRoots:
   - {fileID: 1689030054}
   - {fileID: 598324880}
   - {fileID: 1401736194}
-  - {fileID: 362229573}
+  - {fileID: 331045126}
   - {fileID: 200549129}
