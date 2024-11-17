@@ -14,6 +14,8 @@ public class PlayerMove : MonoBehaviour
     public WheelJoint2D Bwheel;
     public float speedMultiplier;
     public float breakRate;
+    public Wheel WheelF;
+    public Wheel WheelB;
     [Header("Turn")]
     public bool isTurning;
     public Rigidbody2D FWheelRb;
@@ -23,10 +25,11 @@ public class PlayerMove : MonoBehaviour
     public float maxAngularVelocity;
     public float rotationMount;
     private float previousRotation;
+    public int clockSpinAmount;
+    public int counterClockSpinAmount;
 
-
-    [Header("shotGun")]
-    public int shotGunAmount;
+    [Header("ability")]
+    public List<string> abilityList = new List<string>();
 
 
     // Start is called before the first frame update
@@ -104,7 +107,17 @@ public class PlayerMove : MonoBehaviour
 
             
         }
-        //////////////mouse//////////////////////
+        //////////////onland//////////////////////
+        if (WheelF.onAir == false && WheelB.onAir == false)
+        {
+            if (clockSpinAmount > 0 || counterClockSpinAmount > 0)
+            {
+                givePlayerAbilityWhenLand();
+            }
+            
+        }
+
+        /////////////////////
         
         
     }
@@ -137,24 +150,32 @@ public class PlayerMove : MonoBehaviour
             }
         }
         ///////////////////reload////////////////////
-        if (rotationMount > 360)
+        if (rotationMount > 350)
         {
-            Debug.Log("360!");
+            //Debug.Log("360!");
             rotationMount = 0f;
-            shotGunAmount += 1;
+           
+            counterClockSpinAmount += 1;
+            //shotGunAmount += 1;
+
         }
-        else if (rotationMount < -360)
+        else if (rotationMount < -350)
         {
-            Debug.Log("-360!");
+            //Debug.Log("-360!");
+            clockSpinAmount += 1;
             rotationMount = 0f;
         }
         //////////////shoot/////////////////////
         if (Input.GetMouseButtonDown(0))
         {
-            if (shotGunAmount > 0)
+            if (abilityList.Count > 0)
             {
-                aim.ShootShotGun();
-                shotGunAmount -= 1;
+                if (abilityList[0] == "ShotGun")
+                {
+                    aim.ShootShotGun();
+                }
+
+                abilityList.RemoveAt(0);
             }
         }
     }
@@ -196,5 +217,17 @@ public class PlayerMove : MonoBehaviour
             BWmaterial.bounciness = 0;
             BwheelRb.sharedMaterial = BWmaterial;
         }
+    }
+
+    public void givePlayerAbilityWhenLand()
+    {
+        //////put ability on here////
+        if (clockSpinAmount == 1 && counterClockSpinAmount == 0)
+        {
+            abilityList.Add("ShotGun");
+        }
+
+        clockSpinAmount = 0;
+        counterClockSpinAmount = 0;
     }
 }

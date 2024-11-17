@@ -18,6 +18,7 @@ public class Wheel : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            Debug.Log("land!");
             onAir = true;
         }
 
