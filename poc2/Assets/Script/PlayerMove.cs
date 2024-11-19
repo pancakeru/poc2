@@ -150,7 +150,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
         ///////////////////reload////////////////////
-        if (rotationMount > 350)
+        if (rotationMount > 300)
         {
             //Debug.Log("360!");
             rotationMount = 0f;
@@ -159,7 +159,7 @@ public class PlayerMove : MonoBehaviour
             //shotGunAmount += 1;
 
         }
-        else if (rotationMount < -350)
+        else if (rotationMount < -300)
         {
             //Debug.Log("-360!");
             clockSpinAmount += 1;
