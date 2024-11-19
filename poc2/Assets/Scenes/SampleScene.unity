@@ -759,7 +759,7 @@ Transform:
   m_GameObject: {fileID: 200549127}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43025637, y: 35.7, z: -10}
+  m_LocalPosition: {x: 0.43025637, y: 38.25, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -796,7 +796,7 @@ Transform:
   m_GameObject: {fileID: 331045125}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.0011344751, w: 0.9999994}
-  m_LocalPosition: {x: 0.43025637, y: 35.7, z: 0}
+  m_LocalPosition: {x: 0.43025637, y: 38.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -837,18 +837,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.017414361, y: 0}
+  m_Offset: {x: 0.17836583, y: 0.43224883}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 10, y: 10}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8021669, y: 1}
+  m_Size: {x: 5.7013617, y: 2.3678875}
   m_EdgeRadius: 0
 --- !u!50 &331045128
 Rigidbody2D:
@@ -918,8 +918,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -4
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.25943398, b: 0.25943398, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7d8c830511b094bc8860b38ad9be1c64, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -983,8 +983,8 @@ MonoBehaviour:
   isTurning: 0
   FWheelRb: {fileID: 400775825}
   BwheelRb: {fileID: 1085558101}
-  torqueForce: 6500
-  maxAngularVelocity: 600
+  torqueForce: 50000
+  maxAngularVelocity: 5000
   rotationMount: 0
   clockSpinAmount: 0
   counterClockSpinAmount: 0
@@ -1019,7 +1019,7 @@ Transform:
   m_GameObject: {fileID: 400775822}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0180001, y: -1.158, z: 0}
+  m_LocalPosition: {x: 1.43, y: -2.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1041,10 +1041,10 @@ WheelJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.97547054, y: -0.27123824}
+  m_ConnectedAnchor: {x: 2.3359663, y: -1.22521}
   m_Suspension:
     m_DampingRatio: 0.7
-    m_Frequency: 30
+    m_Frequency: 100
     m_Angle: 90
   m_UseMotor: 1
   m_Motor:
@@ -1309,7 +1309,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43025637, y: 35.7, z: -10}
+  m_LocalPosition: {x: 0.43025637, y: 38.25, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3320,7 +3320,7 @@ Transform:
   m_GameObject: {fileID: 1085558098}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0619999, y: -1.1079999, z: 0}
+  m_LocalPosition: {x: -0.8, y: -2.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3342,7 +3342,7 @@ WheelJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -1.0395368, y: -0.212486}
+  m_ConnectedAnchor: {x: -1.9740207, y: -1.1699175}
   m_Suspension:
     m_DampingRatio: 0.7
     m_Frequency: 30
