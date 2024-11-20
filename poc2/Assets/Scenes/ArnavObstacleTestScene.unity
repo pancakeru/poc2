@@ -862,7 +862,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 4
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 50
   m_GravityScale: 1
@@ -976,15 +976,15 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   Fwheel: {fileID: 400775824}
   Bwheel: {fileID: 1085558100}
-  speedMultiplier: 2500
-  breakRate: 1.5
+  speedMultiplier: 2000
+  breakRate: 0.5
   WheelF: {fileID: 400775828}
   WheelB: {fileID: 1085558104}
   isTurning: 0
   FWheelRb: {fileID: 400775825}
   BwheelRb: {fileID: 1085558101}
-  torqueForce: 6500
-  maxAngularVelocity: 600
+  torqueForce: 20000
+  maxAngularVelocity: 1200
   rotationMount: 0
   clockSpinAmount: 0
   counterClockSpinAmount: 0
@@ -1248,8 +1248,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 4
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1.5
+  m_AngularDrag: 0
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: b36f92b5144f7ba4793f7294edecfccc, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2761,8 +2761,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 4
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1.5
+  m_AngularDrag: 0
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: b26ce2ee797c9ef4ba8c7795a624b468, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
