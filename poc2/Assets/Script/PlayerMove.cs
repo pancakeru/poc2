@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     public WheelJoint2D Bwheel;
     public float speedMultiplier;
     public float breakRate;
+    public int maxSpeed;
     public Wheel WheelF;
     public Wheel WheelB;
     [Header("Turn")]
@@ -71,23 +72,35 @@ public class PlayerMove : MonoBehaviour
         ///////////////////////////Move//////////////////////////
         if (movement.y != 0 && isTurning == false)
         {
-            JointMotor2D Bmotor = Bwheel.motor;
-            Bmotor.motorSpeed = movement.y * speedMultiplier;
-            Bwheel.motor = Bmotor;
+            //JointMotor2D Bmotor = Bwheel.motor;
+            //Bmotor.motorSpeed = movement.y * speedMultiplier;
+            //Bwheel.motor = Bmotor;
 
-            JointMotor2D Fmotor = Fwheel.motor;
-            Fmotor.motorSpeed = movement.y * speedMultiplier;
-            Fwheel.motor = Fmotor;
+            //JointMotor2D Fmotor = Fwheel.motor;
+            //Fmotor.motorSpeed = movement.y * speedMultiplier;
+            //Fwheel.motor = Fmotor;
+            if (WheelF.onAir == false || WheelB.onAir == false)
+            {
+                Vector2 force = transform.right * movement.y * speedMultiplier;
+                rb.AddForce(force);
+                rb.drag = 0;
+                if (rb.velocity.magnitude > maxSpeed)
+                {
+                    rb.velocity = rb.velocity.normalized * maxSpeed;
+                }
+            }
         }
         else if (movement.y == 0 && isTurning == false)
         {
-            JointMotor2D Bmotor = Bwheel.motor;
-            Bmotor.motorSpeed = Mathf.Lerp(Bmotor.motorSpeed, 0, Time.fixedDeltaTime * breakRate);
-            Bwheel.motor = Bmotor;
+            if (WheelF.onAir == false && WheelB.onAir == false)
+            {
+                rb.drag = breakRate;
+            }
+            else
+            {
+                rb.drag = 0;
+            }
 
-            JointMotor2D Fmotor = Fwheel.motor;
-            Fmotor.motorSpeed = Mathf.Lerp(Fmotor.motorSpeed, 0, Time.fixedDeltaTime * breakRate);
-            Fwheel.motor = Fmotor;
         }
         ///////////////////filp////////////////////////////////
         if (movement.x != 0 && isTurning == false)
@@ -183,40 +196,49 @@ public class PlayerMove : MonoBehaviour
     private IEnumerator Turning()
     {
         isTurning = true;
-        JointMotor2D Bmotor = Bwheel.motor;
-        Bmotor.motorSpeed = 0;
-        Bwheel.motor = Bmotor;
+        //JointMotor2D Bmotor = Bwheel.motor;
+        //Bmotor.motorSpeed = 0;
+        //Bwheel.motor = Bmotor;
 
-        JointMotor2D Fmotor = Fwheel.motor;
-        Fmotor.motorSpeed = 0;
-        Fwheel.motor = Fmotor;
-        yield return new WaitForSeconds(2f);
+        //JointMotor2D Fmotor = Fwheel.motor;
+        //Fmotor.motorSpeed = 0;
+        //Fwheel.motor = Fmotor;
+        if (WheelF.onAir == false && WheelB.onAir == false)
+        {
+            rb.drag = breakRate;
+        }
+        else
+        {
+            rb.drag = 0;
+        }
+        speedMultiplier = speedMultiplier * -1;
+        yield return new WaitForSeconds(1f);
         isTurning = false;
-        speedMultiplier = speedMultiplier * - 1;
-        if (speedMultiplier < 0)
-        {
-            PhysicsMaterial2D FWmaterial = new PhysicsMaterial2D();
-            FWmaterial.friction = 0.8f; 
-            FWmaterial.bounciness = 0;
-            BwheelRb.sharedMaterial = FWmaterial;
+        rb.drag = 0;
+        //if (speedMultiplier < 0)
+        //{
+        //    //PhysicsMaterial2D FWmaterial = new PhysicsMaterial2D();
+        //    //FWmaterial.friction = 0.8f; 
+        //    //FWmaterial.bounciness = 0;
+        //    //BwheelRb.sharedMaterial = FWmaterial;
 
-            PhysicsMaterial2D BWmaterial = new PhysicsMaterial2D();
-            BWmaterial.friction = 0.4f;
-            BWmaterial.bounciness = 0;
-            FWheelRb.sharedMaterial = BWmaterial;
-        }
-        else if (speedMultiplier > 0)
-        {
-            PhysicsMaterial2D FWmaterial = new PhysicsMaterial2D();
-            FWmaterial.friction = 0.8f;
-            FWmaterial.bounciness = 0;
-            FWheelRb.sharedMaterial = FWmaterial;
+        //    //PhysicsMaterial2D BWmaterial = new PhysicsMaterial2D();
+        //    //BWmaterial.friction = 0.4f;
+        //    //BWmaterial.bounciness = 0;
+        //    //FWheelRb.sharedMaterial = BWmaterial;
+        //}
+        //else if (speedMultiplier > 0)
+        //{
+        //    //PhysicsMaterial2D FWmaterial = new PhysicsMaterial2D();
+        //    //FWmaterial.friction = 0.8f;
+        //    //FWmaterial.bounciness = 0;
+        //    //FWheelRb.sharedMaterial = FWmaterial;
 
-            PhysicsMaterial2D BWmaterial = new PhysicsMaterial2D();
-            BWmaterial.friction = 0.4f;
-            BWmaterial.bounciness = 0;
-            BwheelRb.sharedMaterial = BWmaterial;
-        }
+        //    //PhysicsMaterial2D BWmaterial = new PhysicsMaterial2D();
+        //    //BWmaterial.friction = 0.4f;
+        //    //BWmaterial.bounciness = 0;
+        //    //BwheelRb.sharedMaterial = BWmaterial;
+        //}
     }
 
     public void givePlayerAbilityWhenLand()
