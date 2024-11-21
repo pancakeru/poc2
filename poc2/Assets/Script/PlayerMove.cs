@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     [Header("Basic")]
     public Rigidbody2D rb;
     public Aim aim;
+    public FollowCamera followCam;
     [Header("Movement")]
     public Vector2 movement;
     public WheelJoint2D Fwheel;
@@ -17,6 +18,7 @@ public class PlayerMove : MonoBehaviour
     public int maxSpeed;
     public Wheel WheelF;
     public Wheel WheelB;
+    public bool wantFlip;
     [Header("Turn")]
     public bool isTurning;
     public Rigidbody2D FWheelRb;
@@ -212,7 +214,14 @@ public class PlayerMove : MonoBehaviour
             rb.drag = 0;
         }
         speedMultiplier = speedMultiplier * -1;
-        yield return new WaitForSeconds(1f);
+        if (wantFlip)
+        {
+            if (followCam != null)
+                followCam.flip();
+            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * -1, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+        }
+        
+        yield return new WaitForSeconds(0.2f);
         isTurning = false;
         rb.drag = 0;
         //if (speedMultiplier < 0)
