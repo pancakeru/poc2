@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     public Aim aim;
     public FollowCamera followCam;
     [Header("Movement")]
+    public bool playerIsMoving;
     public Vector2 movement;
     public WheelJoint2D Fwheel;
     public WheelJoint2D Bwheel;
@@ -31,6 +33,10 @@ public class PlayerMove : MonoBehaviour
     public int clockSpinAmount;
     public int counterClockSpinAmount;
 
+    [Header("defendFilp")]
+    public bool inDefendFilp;
+    public GameObject Shield;
+    public MMF_Player filpDefendFeedBack;
     [Header("ability")]
     //public List<string> abilityList = new List<string>();
     public int shotGun;
@@ -73,7 +79,7 @@ public class PlayerMove : MonoBehaviour
     private void FixedUpdate()
     {
         ///////////////////////////Move//////////////////////////
-        if (movement.y != 0 && isTurning == false)
+        if (movement.y != 0 && playerIsMoving == true)
         {
             //JointMotor2D Bmotor = Bwheel.motor;
             //Bmotor.motorSpeed = movement.y * speedMultiplier;
@@ -92,17 +98,43 @@ public class PlayerMove : MonoBehaviour
                     rb.velocity = rb.velocity.normalized * maxSpeed;
                 }
             }
+
+
         }
-        else if (movement.y == 0 && isTurning == false)
+        else if (movement.y == 0 && playerIsMoving == true)
         {
-            if (WheelF.onAir == false && WheelB.onAir == false)
+            if (WheelF.onAir == false || WheelB.onAir == false)
             {
-                rb.drag = breakRate;
-            }
-            else
-            {
+                Vector2 force = transform.right * new Vector2(1,0)* speedMultiplier * 0.5f;
+                rb.AddForce(force);
                 rb.drag = 0;
+                if (rb.velocity.magnitude > maxSpeed)
+                {
+                    rb.velocity = rb.velocity.normalized * maxSpeed / 2;
+                }
             }
+            //if (WheelF.onAir == false && WheelB.onAir == false)
+            //{
+            //    Vector2 force = transform.right * movement.y * speedMultiplier;
+            //    rb.AddForce(force);
+            //    rb.drag = 0;
+            //    if (rb.velocity.magnitude > maxSpeed)
+            //    {
+            //        rb.velocity = rb.velocity.normalized * maxSpeed;
+            //    }
+            //    rb.drag = breakRate;
+            //}
+            //else
+            //{
+            //    Vector2 force = transform.right * movement.y * speedMultiplier;
+            //    rb.AddForce(force);
+            //    rb.drag = 0;
+            //    if (rb.velocity.magnitude > maxSpeed)
+            //    {
+            //        rb.velocity = rb.velocity.normalized * maxSpeed;
+            //    }
+
+            //}
 
         }
         ///////////////////filp////////////////////////////////
@@ -160,9 +192,10 @@ public class PlayerMove : MonoBehaviour
         //////////////////////Turning///////////////////////////
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (isTurning == false)
+            if (defendFilp > 0)
             {
-                StartCoroutine(Turning());
+                defendFilp--;
+                filpDefendFeedBack.PlayFeedbacks();
             }
         }
         ///////////////////reload////////////////////
@@ -191,6 +224,8 @@ public class PlayerMove : MonoBehaviour
             }
         }
     }
+
+    
 
     private IEnumerator Turning()
     {

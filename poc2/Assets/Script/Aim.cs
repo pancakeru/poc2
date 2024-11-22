@@ -5,7 +5,7 @@ using UnityEngine;
 public class Aim : MonoBehaviour
 {
     public Rigidbody2D rb; 
-    public float ShouGunrecoilForce = 10f;
+    public float ShouGunrecoilForce;
     public GameObject ShouGun;
 
     void Update()
@@ -29,7 +29,7 @@ public class Aim : MonoBehaviour
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
         if (projectileRb != null)
         {
-            projectileRb.velocity = recoilDirection * -20;
+            //projectileRb.velocity = recoilDirection * -20;
         }
     }
 }
