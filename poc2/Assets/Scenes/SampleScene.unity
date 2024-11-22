@@ -4632,6 +4632,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4039336504791837641, guid: 2786d4afbf7a66f4ab048172db5345b0, type: 3}
+      propertyPath: ShouGunrecoilForce
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334250730601165979, guid: 2786d4afbf7a66f4ab048172db5345b0, type: 3}
+      propertyPath: maxSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334250730601165979, guid: 2786d4afbf7a66f4ab048172db5345b0, type: 3}
+      propertyPath: torqueForce
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334250730601165979, guid: 2786d4afbf7a66f4ab048172db5345b0, type: 3}
+      propertyPath: speedMultiplier
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334250730601165979, guid: 2786d4afbf7a66f4ab048172db5345b0, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 3000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

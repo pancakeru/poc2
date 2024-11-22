@@ -30,8 +30,9 @@ public class PlayerMove : MonoBehaviour
     public int counterClockSpinAmount;
 
     [Header("ability")]
-    public List<string> abilityList = new List<string>();
-
+    //public List<string> abilityList = new List<string>();
+    public int shotGun;
+    public int defendFilp;
 
     // Start is called before the first frame update
     void Start()
@@ -163,32 +164,28 @@ public class PlayerMove : MonoBehaviour
             }
         }
         ///////////////////reload////////////////////
-        if (rotationMount > 300)
+        if (rotationMount > 360)
         {
-            //Debug.Log("360!");
+            ////Debug.Log("360!");
+            //rotationMount = 0f;
+            shotGun += 1;
             rotationMount = 0f;
-           
-            counterClockSpinAmount += 1;
-            //shotGunAmount += 1;
+            //counterClockSpinAmount += 1;
+            ////shotGunAmount += 1;
 
         }
-        else if (rotationMount < -300)
+        else if (rotationMount < -360)
         {
-            //Debug.Log("-360!");
-            clockSpinAmount += 1;
+            defendFilp += 1;
             rotationMount = 0f;
         }
         //////////////shoot/////////////////////
         if (Input.GetMouseButtonDown(0))
         {
-            if (abilityList.Count > 0)
+            if (shotGun > 0)
             {
-                if (abilityList[0] == "ShotGun")
-                {
-                    aim.ShootShotGun();
-                }
-
-                abilityList.RemoveAt(0);
+                aim.ShootShotGun();
+                shotGun -= 1;
             }
         }
     }
@@ -244,12 +241,14 @@ public class PlayerMove : MonoBehaviour
     public void givePlayerAbilityWhenLand()
     {
         //////put ability on here////
-        if (clockSpinAmount == 1 && counterClockSpinAmount == 0)
-        {
-            abilityList.Add("ShotGun");
-        }
+        //if (clockSpinAmount == 1 && counterClockSpinAmount == 0)
+        //{
+        //    abilityList.Add("ShotGun");
+        //}
 
-        clockSpinAmount = 0;
-        counterClockSpinAmount = 0;
+        //clockSpinAmount = 0;
+        //counterClockSpinAmount = 0;
+        shotGun = 0;
+        defendFilp = 0;
     }
 }
