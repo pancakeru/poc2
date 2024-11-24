@@ -158,7 +158,7 @@ public class PlayerMove : MonoBehaviour
         //////////////onland//////////////////////
         if (WheelF.onAir == false && WheelB.onAir == false)
         {
-            if (clockSpinAmount > 0 || counterClockSpinAmount > 0)
+            if (shotGun > 0 || defendFilp > 0)
             {
                 givePlayerAbilityWhenLand();
             }
@@ -196,6 +196,7 @@ public class PlayerMove : MonoBehaviour
             {
                 defendFilp--;
                 filpDefendFeedBack.PlayFeedbacks();
+                StartCoroutine(defendFilpG());
             }
         }
         ///////////////////reload////////////////////
@@ -280,6 +281,14 @@ public class PlayerMove : MonoBehaviour
         //    //BWmaterial.bounciness = 0;
         //    //BwheelRb.sharedMaterial = BWmaterial;
         //}
+    }
+
+    IEnumerator defendFilpG()
+    {
+
+        rb.gravityScale = 0.1f;
+        yield return new WaitForSeconds(3f);
+        rb.gravityScale = 1f;
     }
 
     public void givePlayerAbilityWhenLand()
