@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class Aim : MonoBehaviour
@@ -7,15 +8,21 @@ public class Aim : MonoBehaviour
     public Rigidbody2D rb; 
     public float ShouGunrecoilForce;
     public GameObject ShouGun;
-
+    public MMF_Player player;
+    public BulletJuice BulletJuice;
     void Update()
     {
-        
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = 0f; 
+        Vector2 directionToMouse = (mouseWorldPosition - transform.position).normalized;
+        float angle = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     public void ShootShotGun()
     {
-
+        player.PlayFeedbacks();
+        StartCoroutine(lockRotation());
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0f; 
         Vector2 directionToMouse = (mouseWorldPosition - transform.position).normalized;
@@ -31,5 +38,12 @@ public class Aim : MonoBehaviour
         {
             //projectileRb.velocity = recoilDirection * -20;
         }
+    }
+
+    IEnumerator lockRotation()
+    {
+        BulletJuice.lockRotation = true;
+        yield return new WaitForSeconds(2f);
+        BulletJuice.lockRotation = false;
     }
 }
