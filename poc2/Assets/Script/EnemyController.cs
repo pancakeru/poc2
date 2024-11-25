@@ -14,20 +14,28 @@ public class EnemyController : MonoBehaviour
 {
 
     public EnemyType enemy;
+    [Header("General")]
+    [SerializeField]
+    float moveSpeed = 5f;
+    [SerializeField]
+    bool showDebugLines = true;
 
     [Header("Parolling Properties")]
     [SerializeField]
     Transform[] points;
     int currentPoint;
-    [SerializeField]
-    bool showDebugLines=true;
+    
 
     [SerializeField]
     Rigidbody2D rb;
-    [SerializeField]
-    float moveSpeed = 5f;
-    bool movingForward=true;
     
+    
+    bool movingForward=true;
+
+
+    [Header("Chasing Properties")]
+    [SerializeField] Transform player;
+    [SerializeField] Collider2D boundary;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,14 +76,33 @@ public class EnemyController : MonoBehaviour
                 }
                 break;
 
+            case EnemyType.Chasing:
+                Vector2 direction = (player.position - transform.position).normalized;
+
+                // Calculate new position
+                Vector2 newPosition = rb.position + direction * moveSpeed * Time.deltaTime;
+
+                // Check if the new position is within the boundary
+                if (boundary.OverlapPoint(newPosition))
+                {
+                    rb.MovePosition(newPosition); // Move the enemy
+                }
+
+                break;
+
         }
     }
 
     private void OnDrawGizmos()
     {
-        if (showDebugLines && enemy==EnemyType.Parolling)
+        if (!showDebugLines)
         {
-            Gizmos.color = Color.white;
+            return;
+        }
+        Gizmos.color = Color.white;
+        if (enemy==EnemyType.Parolling)
+        {
+           
             for (int i = 0; i < points.Length; i++)
             {
                 Transform currentWaypoint = points[i];
@@ -93,6 +120,11 @@ public class EnemyController : MonoBehaviour
                 }
             }
            
+        }
+        if (boundary != null && enemy==EnemyType.Chasing)
+        {
+          
+            Gizmos.DrawWireCube(boundary.bounds.center,boundary.bounds.size);
         }
     }
 }
