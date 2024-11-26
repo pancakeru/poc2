@@ -363,6 +363,8 @@ MonoBehaviour:
   rb: {fileID: 3809666715790848277}
   ShouGunrecoilForce: 175
   ShouGun: {fileID: 6124257234980028858, guid: ae64eb7ccc196d644922d3bb2dae3818, type: 3}
+  player: {fileID: 0}
+  BulletJuice: {fileID: 0}
 --- !u!1 &2835240336807620121
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +519,14 @@ MonoBehaviour:
   filpDefendFeedBack: {fileID: 1448401341357878385}
   shotGun: 0
   defendFilp: 0
+  slowMotionTime: 300
+  slowMotionTimer: 300
+  inSLowMotion: 0
+  slowMotionRate: 0.6
+  slowMotionBar: {fileID: 0}
+  isBurnOut: 0
+  onBurn: {fileID: 0}
+  offBurn: {fileID: 0}
 --- !u!114 &9104564121343619836
 MonoBehaviour:
   m_ObjectHideFlags: 0

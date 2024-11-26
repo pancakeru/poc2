@@ -1,4 +1,5 @@
 using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +42,15 @@ public class PlayerMove : MonoBehaviour
     //public List<string> abilityList = new List<string>();
     public int shotGun;
     public int defendFilp;
-
+    [Header("slowMotion")]
+    public int slowMotionTime;
+    public int slowMotionTimer;
+    public bool inSLowMotion;
+    public float slowMotionRate;
+    public MMProgressBar slowMotionBar;
+    public bool isBurnOut;
+    public MMF_Player onBurn;
+    public MMF_Player offBurn;
     // Start is called before the first frame update
     void Start()
     {
@@ -166,7 +175,39 @@ public class PlayerMove : MonoBehaviour
         }
 
         /////////////////////
-        
+
+        if (inSLowMotion == true)
+        {
+            if (slowMotionTimer > 0)
+            {
+                Time.timeScale = slowMotionRate;
+                slowMotionTimer--;
+                slowMotionBar.UpdateBar(slowMotionTimer, 0, slowMotionTime);
+            }
+            else if (slowMotionTimer == 0)
+            {
+                isBurnOut = true;
+                StartCoroutine(onBurnOut());
+                slowMotionBar.UpdateBar(slowMotionTimer, 0, slowMotionTime);
+                onBurn.PlayFeedbacks();
+            }
+
+        }
+        else if (inSLowMotion == false)
+        {
+            if (slowMotionTimer < slowMotionTime)
+            {
+                Time.timeScale = 1;
+                slowMotionTimer += 1;
+                slowMotionBar.UpdateBar(slowMotionTimer, 0, slowMotionTime);
+                if (isBurnOut == true && slowMotionTime == slowMotionTimer)
+                { 
+                    isBurnOut = false;
+                    offBurn.PlayFeedbacks();
+                }
+
+            }
+        }
         
     }
 
@@ -224,9 +265,24 @@ public class PlayerMove : MonoBehaviour
                 shotGun -= 1;
             }
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (isBurnOut == false && slowMotionTimer > 0)
+            {
+                inSLowMotion = true;
+            }
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            inSLowMotion = false;
+            
+        }
+
     }
 
-    
+
 
     private IEnumerator Turning()
     {
@@ -303,5 +359,13 @@ public class PlayerMove : MonoBehaviour
         //counterClockSpinAmount = 0;
         shotGun = 0;
         defendFilp = 0;
+    }
+
+    public IEnumerator onBurnOut()
+    {
+        
+        Time.timeScale = 1;
+        yield return new WaitForSeconds(2f);
+        inSLowMotion = false;
     }
 }
