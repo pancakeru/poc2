@@ -12,7 +12,7 @@ public enum EnemyType
 
 public class EnemyController : MonoBehaviour
 {
-
+    public bool canKill;
     public EnemyType enemy;
     [Header("General")]
     [SerializeField]
