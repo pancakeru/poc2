@@ -13,6 +13,8 @@ public enum EnemyType
 public class EnemyController : MonoBehaviour
 {
     public bool canKill;
+    [SerializeField]
+    bool facingRight;
     public EnemyType enemy;
     [Header("General")]
     [SerializeField]
@@ -36,10 +38,21 @@ public class EnemyController : MonoBehaviour
     [Header("Chasing Properties")]
     [SerializeField] Transform player;
     [SerializeField] Collider2D boundary;
+    [SerializeField] float triggerDistance;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (facingRight)
+        {
+            flip();
+        }
+        switch (enemy)
+        {
+            case EnemyType.Chasing:
+                //if(player==null)
+                player = GameObject.FindWithTag("Player").transform;
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -48,6 +61,7 @@ public class EnemyController : MonoBehaviour
         switch (enemy)
         {
             case EnemyType.Parolling:
+                
                 Vector2 target = points[currentPoint].position;
                 Vector2 currentPos = rb.position;
                 Vector2 newPos = Vector2.MoveTowards(currentPos, target, moveSpeed * Time.deltaTime);
@@ -59,7 +73,14 @@ public class EnemyController : MonoBehaviour
                         currentPoint++;
                        if(currentPoint== points.Length - 1)
                         {
+                            
                             movingForward = false;
+                            
+                        }
+
+                        if (!facingRight)
+                        {
+                            flip();
                         }
                     }
                     else if(!movingForward&& currentPoint > -1)
@@ -67,7 +88,12 @@ public class EnemyController : MonoBehaviour
                         currentPoint--;
                         if (currentPoint == 0)
                         {
+                            
                             movingForward = true;
+                        }
+                        if (facingRight)
+                        {
+                            flip();
                         }
                     }
                    
@@ -77,6 +103,11 @@ public class EnemyController : MonoBehaviour
                 break;
 
             case EnemyType.Chasing:
+                float playerDistance = Vector2.Distance(gameObject.transform.position, player.position);
+                if (playerDistance > triggerDistance)
+                {
+                    return;
+                }
                 Vector2 direction = (player.position - transform.position).normalized;
 
                 // Calculate new position
@@ -88,6 +119,20 @@ public class EnemyController : MonoBehaviour
                     rb.MovePosition(newPosition); // Move the enemy
                 }
 
+                if (player.position.x > transform.position.x)
+                {
+                    if (!facingRight)
+                    {
+                        flip();
+                    }
+                }
+                else
+                {
+                    if (facingRight)
+                    {
+                        flip();
+                    }
+                }
                 break;
 
         }
@@ -126,5 +171,17 @@ public class EnemyController : MonoBehaviour
           
             Gizmos.DrawWireCube(boundary.bounds.center,boundary.bounds.size);
         }
+    }
+
+    void flip()
+    {
+        facingRight = facingRight ? false : true;
+
+        Vector3 scale = rb.gameObject.transform.localScale;
+
+        scale.x *= -1;
+
+        rb.gameObject.transform.localScale = scale;
+
     }
 }

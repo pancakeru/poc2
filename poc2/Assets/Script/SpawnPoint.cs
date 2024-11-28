@@ -33,9 +33,9 @@ public class SpawnPoint : MonoBehaviour
     {
         return transform.position;
     }
-    public void setActive(bool active)
+    public void setActive(bool nActive)
     {
-        if (active)
+        if (nActive)
         {
             active = true;
             if (mySp != null)

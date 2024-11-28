@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
+    [SerializeField]
     SpawnPoint respawnPoint;
     public bool canDie;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class PlayerLife : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         SpawnPoint newSpawn;
+
         if (collision.TryGetComponent<SpawnPoint>(out newSpawn))
         {
 
@@ -31,7 +34,7 @@ public class PlayerLife : MonoBehaviour
         }
 
         EnemyController newEnim;
-        if(collision.TryGetComponent<EnemyController>(out newEnim))
+        if(collision.transform.parent.TryGetComponent<EnemyController>(out newEnim))
         {
             if (newEnim.canKill)
             {

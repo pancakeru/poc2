@@ -10,6 +10,7 @@ public class Aim : MonoBehaviour
     public GameObject ShouGun;
     public MMF_Player player;
     public BulletJuice BulletJuice;
+
     void Update()
     {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
