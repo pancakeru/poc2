@@ -27,7 +27,7 @@ public class BallMove : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float t = Mathf.Clamp01(elapsedTime / rotationDuration);
             t = Mathf.SmoothStep(0f, 1f, t);
-            float angle = Mathf.Lerp(0f, 270f, t);
+            float angle = Mathf.Lerp(0f, 180f, t);
             float radians = Mathf.Deg2Rad * angle;
             Vector3 offset = new Vector3(
                 Mathf.Sin(radians) * radius,

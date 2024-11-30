@@ -248,7 +248,7 @@ public class PlayerMove : MonoBehaviour
                 defendFilp--;
                 filpDefendFeedBack.PlayFeedbacks();
                 StartCoroutine(defendFilpG());
-                defendBallabilityList[defendBallabilityList.Count - 1].GetComponent<MMF_Player>().PlayFeedbacks();
+                defendBallabilityList[defendBallabilityList.Count - 1].GetComponent<BallFeel>().playOnTrigger();
                 defendBallabilityList.RemoveAt(defendBallabilityList.Count - 1);
             }
         }
@@ -289,7 +289,7 @@ public class PlayerMove : MonoBehaviour
             {
                 aim.ShootShotGun();
                 shotGun -= 1;
-                ShotGunabilityList[ShotGunabilityList.Count - 1].GetComponent<MMF_Player>().PlayFeedbacks();
+                ShotGunabilityList[ShotGunabilityList.Count - 1].GetComponent<BallFeel>().playOnTrigger();
                 ShotGunabilityList.RemoveAt(ShotGunabilityList.Count - 1);
             }
         }
@@ -389,12 +389,12 @@ public class PlayerMove : MonoBehaviour
         defendFilp = 0;
         for (int i = 0; i < ShotGunabilityList.Count; i++)
         {
-            ShotGunabilityList[i].GetComponent<MMF_Player>().PlayFeedbacks();
+            ShotGunabilityList[i].GetComponent<BallFeel>().playOnDestory();
         }
 
         for (int i = 0; i < defendBallabilityList.Count; i++)
         {
-            defendBallabilityList[i].GetComponent<MMF_Player>().PlayFeedbacks();
+            defendBallabilityList[i].GetComponent<BallFeel>().playOnDestory();
         }
         ShotGunabilityList.Clear();
         defendBallabilityList.Clear();
