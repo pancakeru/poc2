@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerMove : MonoBehaviour
     public Rigidbody2D rb;
     public Aim aim;
     public FollowCamera followCam;
+    public CursorMove cursor;
+    public CursorMove Rcursor;
     [Header("Movement")]
     public bool playerIsMoving;
     public Vector2 movement;
@@ -39,9 +42,15 @@ public class PlayerMove : MonoBehaviour
     public GameObject Shield;
     public MMF_Player filpDefendFeedBack;
     [Header("ability")]
+    public Transform startLocation;
     //public List<string> abilityList = new List<string>();
     public int shotGun;
     public int defendFilp;
+    public GameObject shotGunBall;
+    public List<GameObject> ShotGunabilityList;
+    public GameObject defendBall;
+    public List<GameObject> defendBallabilityList;
+
     [Header("slowMotion")]
     public int slowMotionTime;
     public int slowMotionTimer;
@@ -183,6 +192,7 @@ public class PlayerMove : MonoBehaviour
                 Time.timeScale = slowMotionRate;
                 slowMotionTimer--;
                 slowMotionBar.UpdateBar(slowMotionTimer, 0, slowMotionTime);
+                
             }
             else if (slowMotionTimer == 0)
             {
@@ -238,6 +248,8 @@ public class PlayerMove : MonoBehaviour
                 defendFilp--;
                 filpDefendFeedBack.PlayFeedbacks();
                 StartCoroutine(defendFilpG());
+                defendBallabilityList[defendBallabilityList.Count - 1].GetComponent<MMF_Player>().PlayFeedbacks();
+                defendBallabilityList.RemoveAt(defendBallabilityList.Count - 1);
             }
         }
         ///////////////////reload////////////////////
@@ -245,16 +257,30 @@ public class PlayerMove : MonoBehaviour
         {
             ////Debug.Log("360!");
             //rotationMount = 0f;
-            shotGun += 1;
-            rotationMount = 0f;
-            //counterClockSpinAmount += 1;
-            ////shotGunAmount += 1;
-
+            if(shotGun < 5)
+            { 
+                shotGun += 1;
+                rotationMount = 0f;
+                GameObject PShotGun;
+                PShotGun = Instantiate(shotGunBall, startLocation.transform);
+                ShotGunabilityList.Add(PShotGun);
+                //counterClockSpinAmount += 1;
+                ////shotGunAmount += 1;
+            }
         }
         else if (rotationMount < -360)
         {
-            defendFilp += 1;
             rotationMount = 0f;
+            if (defendFilp < 5)
+            {
+                defendFilp += 1;
+                rotationMount = 0f;
+                GameObject PDefend;
+                PDefend = Instantiate(defendBall, startLocation.transform);
+                defendBallabilityList.Add(PDefend);
+                //counterClockSpinAmount += 1;
+                ////shotGunAmount += 1;
+            }
         }
         //////////////shoot/////////////////////
         if (Input.GetMouseButtonDown(0))
@@ -263,6 +289,8 @@ public class PlayerMove : MonoBehaviour
             {
                 aim.ShootShotGun();
                 shotGun -= 1;
+                ShotGunabilityList[ShotGunabilityList.Count - 1].GetComponent<MMF_Player>().PlayFeedbacks();
+                ShotGunabilityList.RemoveAt(ShotGunabilityList.Count - 1);
             }
         }
 
@@ -359,6 +387,17 @@ public class PlayerMove : MonoBehaviour
         //counterClockSpinAmount = 0;
         shotGun = 0;
         defendFilp = 0;
+        for (int i = 0; i < ShotGunabilityList.Count; i++)
+        {
+            ShotGunabilityList[i].GetComponent<MMF_Player>().PlayFeedbacks();
+        }
+
+        for (int i = 0; i < defendBallabilityList.Count; i++)
+        {
+            defendBallabilityList[i].GetComponent<MMF_Player>().PlayFeedbacks();
+        }
+        ShotGunabilityList.Clear();
+        defendBallabilityList.Clear();
     }
 
     public IEnumerator onBurnOut()
