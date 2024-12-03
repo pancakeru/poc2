@@ -253,7 +253,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
         ///////////////////reload////////////////////
-        if (rotationMount > 360)
+        if (rotationMount > 340)
         {
             ////Debug.Log("360!");
             //rotationMount = 0f;
@@ -268,7 +268,7 @@ public class PlayerMove : MonoBehaviour
                 ////shotGunAmount += 1;
             }
         }
-        else if (rotationMount < -360)
+        else if (rotationMount < -340)
         {
             rotationMount = 0f;
             if (defendFilp < 5)
