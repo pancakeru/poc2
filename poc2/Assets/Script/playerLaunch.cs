@@ -10,7 +10,7 @@ public class playerLaunch : MonoBehaviour
     public MMF_Player SpamFinishPlayer;
     public int AmountOfSPam;
     public PlayerMove PlayerMove;
-
+    
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))
