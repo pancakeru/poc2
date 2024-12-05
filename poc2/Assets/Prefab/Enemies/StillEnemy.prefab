@@ -63,6 +63,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 837817361056866821}
     m_Modifications:
+    - target: {fileID: 50917729986982521, guid: 858806f2fcf034367975a68aa12503ec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -882578670, guid: a2ae8136336eb4f40a4ca2844f0d9931, type: 3}
     - target: {fileID: 3754929947176871831, guid: 858806f2fcf034367975a68aa12503ec, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -71,6 +75,14 @@ PrefabInstance:
       propertyPath: managedReferences[2607028392808153114].TargetGameObject
       value: 
       objectReference: {fileID: 1142526620212376826}
+    - target: {fileID: 7834264534924199232, guid: 858806f2fcf034367975a68aa12503ec, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.20343328
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834264534924199232, guid: 858806f2fcf034367975a68aa12503ec, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.30159998
+      objectReference: {fileID: 0}
     - target: {fileID: 7942052587308217388, guid: 858806f2fcf034367975a68aa12503ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.18
