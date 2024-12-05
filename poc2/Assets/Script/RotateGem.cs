@@ -8,7 +8,9 @@ public class GemCollect : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player collided with the gem!");
-            Destroy(gameObject);
+            
         }
+        Destroy(gameObject);
+
     }
 }
