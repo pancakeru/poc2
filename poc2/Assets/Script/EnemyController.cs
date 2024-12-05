@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum EnemyType
 {
@@ -39,6 +40,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] Collider2D boundary;
     [SerializeField] float triggerDistance;
+    //public NavMeshAgent agent;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +52,10 @@ public class EnemyController : MonoBehaviour
         {
             case EnemyType.Chasing:
                 //if(player==null)
-                player = GameObject.FindWithTag("Player").transform;
+                player = GameObject.FindGameObjectWithTag("Player").transform;
+                //agent = GetComponent<NavMeshAgent>();
+                //agent.updatePosition = false;
+                //agent.updateRotation = false;
                 break;
         }
     }
@@ -103,6 +108,9 @@ public class EnemyController : MonoBehaviour
                 break;
 
             case EnemyType.Chasing:
+                //agent.SetDestination(player.position);
+
+
                 float playerDistance = Vector2.Distance(gameObject.transform.position, player.position);
                 if (playerDistance > triggerDistance)
                 {

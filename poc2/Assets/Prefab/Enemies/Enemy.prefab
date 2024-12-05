@@ -10786,7 +10786,7 @@ MonoBehaviour:
           ButtonText: Automatic Shaker Setup
         Owner: {fileID: 5268333772086505881}
         DebugActive: 0
-        FreezeFrameDuration: 0.4
+        FreezeFrameDuration: 0.2
         MinimumTimescaleThreshold: 0.1
 --- !u!1 &8861242750169204290
 GameObject:

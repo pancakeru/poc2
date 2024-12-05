@@ -9,6 +9,7 @@ TagManager:
   - Cursor
   - shotGun
   - Rcursor
+  - Chaser
   layers:
   - Default
   - TransparentFX

@@ -253,7 +253,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
         ///////////////////reload////////////////////
-        if (rotationMount > 340)
+        if (rotationMount > 290)
         {
             ////Debug.Log("360!");
             //rotationMount = 0f;
@@ -268,7 +268,7 @@ public class PlayerMove : MonoBehaviour
                 ////shotGunAmount += 1;
             }
         }
-        else if (rotationMount < -340)
+        else if (rotationMount < -290)
         {
             rotationMount = 0f;
             if (defendFilp < 5)
@@ -369,9 +369,10 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator defendFilpG()
     {
-
-        rb.gravityScale = 0.1f;
-        yield return new WaitForSeconds(3f);
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.gravityScale = 0.01f;
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        yield return new WaitForSeconds(2f);
         rb.gravityScale = 1f;
     }
 
