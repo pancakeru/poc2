@@ -53,6 +53,7 @@ public class PlayerMove : MonoBehaviour
     public MMF_Player onAimCrossAppear;
     public MMF_Player onAimCircleDisappear;
     public AudioSource onGunLoad;
+    public AudioSource onGasAdd;
     [Header("slowMotion")]
     public int slowMotionTime;
     public int slowMotionTimer;
@@ -281,6 +282,7 @@ public class PlayerMove : MonoBehaviour
             rotationMount = 0f;
             if (defendFilp < 5)
             {
+                onGasAdd.Play();
                 defendFilp += 1;
                 rotationMount = 0f;
                 GameObject PDefend;
@@ -395,7 +397,10 @@ public class PlayerMove : MonoBehaviour
         //{
         //    abilityList.Add("ShotGun");
         //}
-
+        if (shotGun != 0)
+        {
+            onAimCircleDisappear.PlayFeedbacks();
+        }
         //clockSpinAmount = 0;
         //counterClockSpinAmount = 0;
         shotGun = 0;
@@ -410,7 +415,7 @@ public class PlayerMove : MonoBehaviour
         //    defendBallabilityList[i].GetComponent<BallFeel>().playOnDestory();
         //}
         ShotGunabilityList.Clear();
-        onAimCircleDisappear.PlayFeedbacks();
+        
         //defendBallabilityList.Clear();
     }
 

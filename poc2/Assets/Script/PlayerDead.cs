@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using MoreMountains.Feel;
 using MoreMountains.Tools;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class PlayerDead : MonoBehaviour
     public GameObject DeadUI;
     public WheelJoint2D FWheelJoint2D;
     public WheelJoint2D BWheelJoint2D;
+    public MMF_Player MMF_Player;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Ground")
@@ -25,6 +27,7 @@ public class PlayerDead : MonoBehaviour
         BWheelJoint2D.motor = Bmotor;
         playerMove.enabled = false;
         DeadUI.SetActive(true);
+        MMF_Player.PlayFeedbacks();
     }
 
     
