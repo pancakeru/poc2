@@ -14,6 +14,8 @@ public class OnKillChaseEnemy : MonoBehaviour
     public Animator Panimator;
     public Animator Fanimator;
     public Animator Banimator;
+    public Animator Biganimator;
+    public Animator Aanimator;
     public Volume BloomVolume;
     void Update()
     {
@@ -27,6 +29,7 @@ public class OnKillChaseEnemy : MonoBehaviour
             Panimator.SetTrigger("ChangeColor");
             Fanimator.SetTrigger("ChangeColor");
             Banimator.SetTrigger("ChangeColor");
+            Biganimator.SetTrigger("ChangeColor");
             StartCoroutine(bloom());
         }
     }

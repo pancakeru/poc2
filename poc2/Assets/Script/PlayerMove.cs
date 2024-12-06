@@ -50,7 +50,9 @@ public class PlayerMove : MonoBehaviour
     public List<GameObject> ShotGunabilityList;
     public GameObject defendBall;
     public List<GameObject> defendBallabilityList;
-
+    public MMF_Player onAimCrossAppear;
+    public MMF_Player onAimCircleDisappear;
+    public AudioSource onGunLoad;
     [Header("slowMotion")]
     public int slowMotionTime;
     public int slowMotionTimer;
@@ -258,12 +260,18 @@ public class PlayerMove : MonoBehaviour
             ////Debug.Log("360!");
             //rotationMount = 0f;
             if(shotGun < 5)
-            { 
+            {
+                onGunLoad.Play();   
+                if (shotGun == 0)
+                {
+                    onAimCrossAppear.PlayFeedbacks();
+                }
                 shotGun += 1;
                 rotationMount = 0f;
                 GameObject PShotGun;
                 PShotGun = Instantiate(shotGunBall, startLocation.transform);
                 ShotGunabilityList.Add(PShotGun);
+                
                 //counterClockSpinAmount += 1;
                 ////shotGunAmount += 1;
             }
@@ -291,6 +299,10 @@ public class PlayerMove : MonoBehaviour
                 shotGun -= 1;
                 ShotGunabilityList[ShotGunabilityList.Count - 1].GetComponent<BallFeel>().playOnTrigger();
                 ShotGunabilityList.RemoveAt(ShotGunabilityList.Count - 1);
+                if (shotGun == 0)
+                { 
+                    onAimCircleDisappear.PlayFeedbacks();
+                }
             }
         }
 
@@ -387,18 +399,19 @@ public class PlayerMove : MonoBehaviour
         //clockSpinAmount = 0;
         //counterClockSpinAmount = 0;
         shotGun = 0;
-        defendFilp = 0;
+        //defendFilp = 0;
         for (int i = 0; i < ShotGunabilityList.Count; i++)
         {
             ShotGunabilityList[i].GetComponent<BallFeel>().playOnDestory();
         }
 
-        for (int i = 0; i < defendBallabilityList.Count; i++)
-        {
-            defendBallabilityList[i].GetComponent<BallFeel>().playOnDestory();
-        }
+        //for (int i = 0; i < defendBallabilityList.Count; i++)
+        //{
+        //    defendBallabilityList[i].GetComponent<BallFeel>().playOnDestory();
+        //}
         ShotGunabilityList.Clear();
-        defendBallabilityList.Clear();
+        onAimCircleDisappear.PlayFeedbacks();
+        //defendBallabilityList.Clear();
     }
 
     public IEnumerator onBurnOut()
