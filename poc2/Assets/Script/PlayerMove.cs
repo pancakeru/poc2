@@ -54,6 +54,7 @@ public class PlayerMove : MonoBehaviour
     public MMF_Player onAimCircleDisappear;
     public AudioSource onGunLoad;
     public AudioSource onGasAdd;
+    public MMF_Player onLandFeedBack;
     [Header("slowMotion")]
     public int slowMotionTime;
     public int slowMotionTimer;
@@ -383,11 +384,13 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator defendFilpG()
     {
+        inDefendFilp = true;
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.gravityScale = 0.01f;
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         rb.gravityScale = 1f;
+        inDefendFilp = false;
     }
 
     public void givePlayerAbilityWhenLand()
@@ -408,6 +411,7 @@ public class PlayerMove : MonoBehaviour
         for (int i = 0; i < ShotGunabilityList.Count; i++)
         {
             ShotGunabilityList[i].GetComponent<BallFeel>().playOnDestory();
+            onLandFeedBack.PlayFeedbacks();
         }
 
         //for (int i = 0; i < defendBallabilityList.Count; i++)

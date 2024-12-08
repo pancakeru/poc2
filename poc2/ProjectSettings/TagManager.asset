@@ -10,6 +10,7 @@ TagManager:
   - shotGun
   - Rcursor
   - Chaser
+  - playerDead
   layers:
   - Default
   - TransparentFX
