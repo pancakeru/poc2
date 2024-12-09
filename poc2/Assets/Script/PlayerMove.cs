@@ -50,7 +50,11 @@ public class PlayerMove : MonoBehaviour
     public List<GameObject> ShotGunabilityList;
     public GameObject defendBall;
     public List<GameObject> defendBallabilityList;
-
+    public MMF_Player onAimCrossAppear;
+    public MMF_Player onAimCircleDisappear;
+    public AudioSource onGunLoad;
+    public AudioSource onGasAdd;
+    public MMF_Player onLandFeedBack;
     [Header("slowMotion")]
     public int slowMotionTime;
     public int slowMotionTimer;
@@ -258,12 +262,18 @@ public class PlayerMove : MonoBehaviour
             ////Debug.Log("360!");
             //rotationMount = 0f;
             if(shotGun < 5)
-            { 
+            {
+                onGunLoad.Play();   
+                if (shotGun == 0)
+                {
+                    onAimCrossAppear.PlayFeedbacks();
+                }
                 shotGun += 1;
                 rotationMount = 0f;
                 GameObject PShotGun;
                 PShotGun = Instantiate(shotGunBall, startLocation.transform);
                 ShotGunabilityList.Add(PShotGun);
+                
                 //counterClockSpinAmount += 1;
                 ////shotGunAmount += 1;
             }
@@ -273,6 +283,7 @@ public class PlayerMove : MonoBehaviour
             rotationMount = 0f;
             if (defendFilp < 5)
             {
+                onGasAdd.Play();
                 defendFilp += 1;
                 rotationMount = 0f;
                 GameObject PDefend;
@@ -291,6 +302,10 @@ public class PlayerMove : MonoBehaviour
                 shotGun -= 1;
                 ShotGunabilityList[ShotGunabilityList.Count - 1].GetComponent<BallFeel>().playOnTrigger();
                 ShotGunabilityList.RemoveAt(ShotGunabilityList.Count - 1);
+                if (shotGun == 0)
+                { 
+                    onAimCircleDisappear.PlayFeedbacks();
+                }
             }
         }
 
@@ -369,11 +384,13 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator defendFilpG()
     {
+        inDefendFilp = true;
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.gravityScale = 0.01f;
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         rb.gravityScale = 1f;
+        inDefendFilp = false;
     }
 
     public void givePlayerAbilityWhenLand()
@@ -383,22 +400,27 @@ public class PlayerMove : MonoBehaviour
         //{
         //    abilityList.Add("ShotGun");
         //}
-
+        if (shotGun != 0)
+        {
+            onAimCircleDisappear.PlayFeedbacks();
+        }
         //clockSpinAmount = 0;
         //counterClockSpinAmount = 0;
         shotGun = 0;
-        defendFilp = 0;
+        //defendFilp = 0;
         for (int i = 0; i < ShotGunabilityList.Count; i++)
         {
             ShotGunabilityList[i].GetComponent<BallFeel>().playOnDestory();
+            onLandFeedBack.PlayFeedbacks();
         }
 
-        for (int i = 0; i < defendBallabilityList.Count; i++)
-        {
-            defendBallabilityList[i].GetComponent<BallFeel>().playOnDestory();
-        }
+        //for (int i = 0; i < defendBallabilityList.Count; i++)
+        //{
+        //    defendBallabilityList[i].GetComponent<BallFeel>().playOnDestory();
+        //}
         ShotGunabilityList.Clear();
-        defendBallabilityList.Clear();
+        
+        //defendBallabilityList.Clear();
     }
 
     public IEnumerator onBurnOut()
