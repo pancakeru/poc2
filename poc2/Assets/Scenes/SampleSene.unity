@@ -8420,10 +8420,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3698199363051480700, guid: 6e9d5deb249414c33be4c2cb37746488, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: SampleSene
+      objectReference: {fileID: 0}
     - target: {fileID: 4430124057101642818, guid: 6e9d5deb249414c33be4c2cb37746488, type: 3}
       propertyPath: PlayerMove
       value: 
       objectReference: {fileID: 331045128}
+    - target: {fileID: 8830608825591499566, guid: 6e9d5deb249414c33be4c2cb37746488, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -71,6 +71,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4331922613235201388, guid: 858806f2fcf034367975a68aa12503ec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4476855311076920639, guid: 858806f2fcf034367975a68aa12503ec, type: 3}
       propertyPath: managedReferences[2607028392808153114].TargetGameObject
       value: 
