@@ -20,7 +20,7 @@ public class ParallaxScrolling : MonoBehaviour
     void FixedUpdate()
     {
         float xdistance = (Maincamera.transform.position.x - XstartPos) * XparallaxEffect;
-        float yPosition = Maincamera.transform.position.y + YstartPos /2 ;
+        float yPosition = YstartPos;//Maincamera.transform.position.y; //+ YstartPos /2 ;
         transform.position = new Vector3(XstartPos + xdistance, yPosition, transform.position.z);
     }
 }
