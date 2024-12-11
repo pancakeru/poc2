@@ -9,4 +9,11 @@ public class levelManager : MonoBehaviour
     {
         SceneManager.LoadScene(targetScene);
     }
+
+    public void quit()
+    {
+        Debug.Log("Quit Game");
+        Application.Quit();
+    }
+
 }

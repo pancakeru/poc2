@@ -45,6 +45,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Sun&Sky
+    uniqueID: 769046299
+    locked: 0
+  - name: Background
+    uniqueID: 646428801
+    locked: 0
+  - name: Ground&Tree
+    uniqueID: 746599553
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 3365150697
     locked: 0

@@ -8,6 +8,10 @@ using UnityEngine.UIElements;
 
 public class PlayerMove : MonoBehaviour
 {
+    [Header("BGM")]
+    public AudioSource BaseBGM;
+    public AudioSource StartBGM;
+    public bool isPlaying = false;
     [Header("Basic")]
     public Rigidbody2D rb;
     public Aim aim;
@@ -100,6 +104,14 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isPlaying == false && playerIsMoving == true)
+        {
+
+            BaseBGM.Stop();
+            StartBGM.Play();
+            isPlaying = true;
+        }
+
         ///////////////////////////Move//////////////////////////
         if (movement.y != 0 && playerIsMoving == true)
         {
