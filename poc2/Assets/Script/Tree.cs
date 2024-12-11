@@ -16,7 +16,7 @@ public class Tree : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        spr = GetComponent<SpriteRenderer>();
+        //spr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
