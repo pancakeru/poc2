@@ -8115,6 +8115,10 @@ PrefabInstance:
       propertyPath: ShouGunrecoilForce
       value: 110
       objectReference: {fileID: 0}
+    - target: {fileID: 7298057527209462370, guid: 2786d4afbf7a66f4ab048172db5345b0, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 098c93e640968ab4c85eccc03d95ae49, type: 3}
     - target: {fileID: 7334250730601165979, guid: 2786d4afbf7a66f4ab048172db5345b0, type: 3}
       propertyPath: onBurn
       value: 
