@@ -17,7 +17,7 @@ public class ParallaxScrolling : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float xdistance = (Maincamera.transform.position.x - XstartPos) * XparallaxEffect;
         float yPosition = Maincamera.transform.position.y + YstartPos /2 ;
