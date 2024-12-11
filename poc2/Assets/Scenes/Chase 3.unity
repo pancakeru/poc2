@@ -8964,7 +8964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3935087602202493007, guid: ed5b803552a024037a319cf3ad5a523a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.7
+      value: 14.4
       objectReference: {fileID: 0}
     - target: {fileID: 4769798599483595228, guid: ed5b803552a024037a319cf3ad5a523a, type: 3}
       propertyPath: m_LocalScale.x
@@ -12791,7 +12791,7 @@ GameObject:
   - component: {fileID: 1698190212}
   - component: {fileID: 1698190210}
   m_Layer: 0
-  m_Name: Box Volume
+  m_Name: PostEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12984,7 +12984,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XstartPos: 0
-  YstartPos: 0
   Maincamera: {fileID: 519420028}
   XparallaxEffect: -0.02
 --- !u!1001 &1745866820
@@ -16058,7 +16057,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XstartPos: 0
-  YstartPos: 0
   Maincamera: {fileID: 519420028}
   XparallaxEffect: 0.1
 --- !u!4 &2078580420 stripped
@@ -46042,10 +46040,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3698199363051480700, guid: 6e9d5deb249414c33be4c2cb37746488, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Chase3
+      objectReference: {fileID: 0}
     - target: {fileID: 4430124057101642818, guid: 6e9d5deb249414c33be4c2cb37746488, type: 3}
       propertyPath: PlayerMove
       value: 
       objectReference: {fileID: 331045128}
+    - target: {fileID: 8830608825591499566, guid: 6e9d5deb249414c33be4c2cb37746488, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
