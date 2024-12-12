@@ -19859,7 +19859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XstartPos: 0
-  Maincamera: {fileID: 0}
+  Maincamera: {fileID: 519420028}
   XparallaxEffect: 0.1
 --- !u!4 &1323035415
 Transform:
@@ -20740,7 +20740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XstartPos: 0
-  Maincamera: {fileID: 0}
+  Maincamera: {fileID: 519420028}
   XparallaxEffect: -0.02
 --- !u!4 &1424278965
 Transform:
@@ -32172,7 +32172,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 292234231347328422, guid: 6e9d5deb249414c33be4c2cb37746488, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Chase 3
+      value: StartScene
       objectReference: {fileID: 0}
     - target: {fileID: 460619574085687507, guid: 6e9d5deb249414c33be4c2cb37746488, type: 3}
       propertyPath: m_Name
