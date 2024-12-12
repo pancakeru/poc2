@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2615110454570077142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6393845938303290609}
+  - component: {fileID: 5510017954617571201}
+  m_Layer: 0
+  m_Name: TreeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6393845938303290609
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615110454570077142}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.4, y: 58.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5510017954617571201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615110454570077142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44e7374eb17446f394f194fb2cb0b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treeSprites:
+  - {fileID: 263885860, guid: e9d75b90c4fda44e6af0fbdbf5c7a408, type: 3}
+  - {fileID: -1978207524, guid: e9d75b90c4fda44e6af0fbdbf5c7a408, type: 3}
+  - {fileID: -750474435, guid: e9d75b90c4fda44e6af0fbdbf5c7a408, type: 3}
+  - {fileID: 41146387, guid: e9d75b90c4fda44e6af0fbdbf5c7a408, type: 3}
+  - {fileID: -1255073051, guid: 12b0d6dcd622b4646b262448fb9ee4ab, type: 3}
+  - {fileID: -2044754223, guid: 12b0d6dcd622b4646b262448fb9ee4ab, type: 3}
+  - {fileID: -383452349, guid: 12b0d6dcd622b4646b262448fb9ee4ab, type: 3}
+  - {fileID: -2047141211, guid: 12b0d6dcd622b4646b262448fb9ee4ab, type: 3}
+  - {fileID: -1026090113, guid: 12b0d6dcd622b4646b262448fb9ee4ab, type: 3}
+  - {fileID: -1053739410, guid: 12b0d6dcd622b4646b262448fb9ee4ab, type: 3}
+  maxFor: {r: 0.47450984, g: 0.87534183, b: 1, a: 1}
+  minFor: {r: 0.36320752, g: 0.84930855, b: 1, a: 1}
+  minGro: {r: 1, g: 0.4745098, b: 0.75686276, a: 0}
+  maxGro: {r: 1, g: 0.17254902, b: 0.62352943, a: 1}
+  minBac: {r: 0.19607843, g: 0, b: 0.09411765, a: 1}
+  maxBac: {r: 0.254717, g: 0, b: 0.09730784, a: 1}
+  minRotation: -5
+  maxRotation: 5
+  sizeVariationRangeF: {x: 0.8, y: 1.2}
+  sizeVariationRangeG: {x: 0.8, y: 1.2}
+  sizeVariationRangeB: {x: 0.8, y: 1.2}
+  forOrder: 20
+  bacOrder: -12
+  groOrder: -2
