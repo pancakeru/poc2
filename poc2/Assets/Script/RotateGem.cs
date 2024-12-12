@@ -4,6 +4,7 @@ public class GemCollect : MonoBehaviour
 {
     public ParticleSystem gemDestroyEffect; // Particle effect for gem destruction
     public AudioClip gemSound; // Audio clip for gem sound
+    public bool isOrb = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,6 +15,10 @@ public class GemCollect : MonoBehaviour
 
             // Play the gem sound at the gem's position
             AudioSource.PlayClipAtPoint(gemSound, transform.position);
+            if (isOrb)
+            {
+
+            }
 
             // Instantiate the particle effect
             Instantiate(gemDestroyEffect, transform.position, Quaternion.identity);
@@ -21,5 +26,6 @@ public class GemCollect : MonoBehaviour
             // Destroy the gem object
             Destroy(gameObject);
         }
+        
     }
 }
