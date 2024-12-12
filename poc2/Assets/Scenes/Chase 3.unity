@@ -532,7 +532,7 @@ Transform:
   m_GameObject: {fileID: 44024514}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.393377, y: 51.2928, z: -10}
+  m_LocalPosition: {x: 19.346931, y: 51.2928, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2723,7 +2723,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: 1878752078, guid: a2ae8136336eb4f40a4ca2844f0d9931, type: 3}
+  m_Sprite: {fileID: 860741824, guid: 9c0502143801d51438fd7289505b8d23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3009,7 +3009,7 @@ Transform:
   m_GameObject: {fileID: 495595672}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 82.2079, y: 37.8312, z: -10}
+  m_LocalPosition: {x: 56.77754, y: 37.8312, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23593,7 +23593,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1878752078, guid: a2ae8136336eb4f40a4ca2844f0d9931, type: 3}
+  m_Sprite: {fileID: 860741824, guid: 9c0502143801d51438fd7289505b8d23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -26406,6 +26406,7 @@ GameObject:
   - component: {fileID: 8537164029563638035}
   - component: {fileID: 8537164029563638037}
   - component: {fileID: 8537164029563638036}
+  - component: {fileID: 8537164029563638038}
   m_Layer: 0
   m_Name: ChaseEnemy
   m_TagString: Untagged
@@ -47783,7 +47784,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.31885216, y: 0.30819997}
+    oldSize: {x: 0.4, y: 0.4}
     newSize: {x: 0.24, y: 0.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -47837,6 +47838,27 @@ NavMeshAgent:
   m_BaseOffset: 0.12
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &8537164029563638038
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3377364926653739972}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: af54d504dc8ad5d4db8f7b66925a1eca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8540621941414679512
 PrefabInstance:
   m_ObjectHideFlags: 0

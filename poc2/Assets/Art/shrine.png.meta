@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 09480076c5e15f64baa053854b0d044a
+guid: f76bd75c0d61e014aa845cea8ef8bc91
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shrine sprite_0
+      name: shrine_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea75d365096c3bc4eb0190a5e9e8ef5e
-      internalID: 879848174
+      spriteID: 3e2907e3e85dd4446b91ba7caa878c28
+      internalID: -108237619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shrine sprite_1
+      name: shrine_1
       rect:
         serializedVersion: 2
         x: 328
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8464a99368e60f43ae8e5df0e09e6a8
-      internalID: 383130608
+      spriteID: ef1bdffec1cae9c409b080ef3a673452
+      internalID: 1179450393
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Shrine sprite_0: 879848174
-      Shrine sprite_1: 383130608
+      shrine_0: -108237619
+      shrine_1: 1179450393
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
