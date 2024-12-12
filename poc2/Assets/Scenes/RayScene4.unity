@@ -5013,7 +5013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!68 &250023574
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -30743,9 +30743,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 14413783}
     - target: {fileID: 7334250730601165979, guid: 2786d4afbf7a66f4ab048172db5345b0, type: 3}
+      propertyPath: maxSpeed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334250730601165979, guid: 2786d4afbf7a66f4ab048172db5345b0, type: 3}
       propertyPath: slowMotionBar
       value: 
       objectReference: {fileID: 83053193}
+    - target: {fileID: 7334250730601165979, guid: 2786d4afbf7a66f4ab048172db5345b0, type: 3}
+      propertyPath: speedMultiplier
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 7334250730601165979, guid: 2786d4afbf7a66f4ab048172db5345b0, type: 3}
       propertyPath: onAimCrossAppear
       value: 
