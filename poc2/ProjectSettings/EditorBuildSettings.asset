@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RayScene4.unity
     guid: f98b0c608338af244aa823a87f76ed89
-  - enabled: 0
-    path: Assets/Scenes/Chase.unity
-    guid: 5f0491240d6b7b343be008e72bea354c
   - enabled: 1
     path: Assets/Scenes/Chase 3.unity
     guid: ac0c53d8a99e047538c611578307638f
+  - enabled: 0
+    path: Assets/Scenes/Chase.unity
+    guid: 5f0491240d6b7b343be008e72bea354c
   m_configObjects: {}
