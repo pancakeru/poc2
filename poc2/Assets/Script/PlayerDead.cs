@@ -30,5 +30,13 @@ public class PlayerDead : MonoBehaviour
         MMF_Player.PlayFeedbacks();
     }
 
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PlayerisDead();
+        }
+    }
+
 }
