@@ -31892,7 +31892,7 @@ Transform:
   m_GameObject: {fileID: 2095435600}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.23893, y: 32.256397, z: 0}
+  m_LocalPosition: {x: 33.244534, y: 32.256397, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -32108,7 +32108,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 292234231347328422, guid: 6e9d5deb249414c33be4c2cb37746488, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: StartScene
+      value: Chase
       objectReference: {fileID: 0}
     - target: {fileID: 460619574085687507, guid: 6e9d5deb249414c33be4c2cb37746488, type: 3}
       propertyPath: m_Name

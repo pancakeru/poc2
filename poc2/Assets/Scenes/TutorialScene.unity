@@ -19650,7 +19650,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 292234231347328422, guid: 6e9d5deb249414c33be4c2cb37746488, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Chase
+      value: RayScene
       objectReference: {fileID: 0}
     - target: {fileID: 460619574085687507, guid: 6e9d5deb249414c33be4c2cb37746488, type: 3}
       propertyPath: m_Name
